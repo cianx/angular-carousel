@@ -47,7 +47,7 @@ angular.module('MyApp', ['angular-carousel']);
  - `rn-carousel-buffered` add this attribute to enable the carousel buffering, good to minimize the DOM (5 slides)
  - `rn-carousel-controls` add this attribute to enable builtin prev/next buttons (you can override by CSS)
  - `rn-carousel-auto-slide` add this attribute to make the carousel slide automatically after given seconds (default=3)
- - `rn-carousel-transition` : transition type, can be one of `slide, zoom, hexagon, fadeAndSlide, none`. (default=slide)
+ - `rn-carousel-transition` : transition type, can be one of `slide, zoom, hexagon, fadeAndSlide, multiple, none`. (default=slide)
  - `rn-carousel-locked`: two way binding boolean that lock/unlock the carousel
  - `rn-carousel-deep-watch`: Deep watch the collection which enable to dynamically add slides at beginning without corrupting position
  - `rn-carousel-loop` : make the carousel loop around from the first element to the last and vice versa. Note that this feature will be disabled if `rn-carousel-buffered` is also declared.
