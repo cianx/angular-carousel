@@ -50,6 +50,7 @@ angular.module('MyApp', ['angular-carousel']);
  - `rn-carousel-transition` : transition type, can be one of `slide, zoom, hexagon, fadeAndSlide, none`. (default=slide)
  - `rn-carousel-locked`: two way binding boolean that lock/unlock the carousel
  - `rn-carousel-deep-watch`: Deep watch the collection which enable to dynamically add slides at beginning without corrupting position
+ - `rn-carousel-loop` : make the carousel loop around from the first element to the last and vice versa. Note that this feature will be disabled if `rn-carousel-buffered` is also declared.
 
 ## Indicators
 
