@@ -1,6 +1,6 @@
 /**
  * Angular Carousel - Mobile friendly touch carousel for AngularJS
- * @version v0.3.7 - 2015-01-06
+ * @version v0.3.10 - 2015-04-12
  * @link http://revolunet.github.com/angular-carousel
  * @author Julien Bouquillon <julien@revolunet.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -342,9 +342,8 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
 
                         var defaultOptions = {
                             transitionType: iAttributes.rnCarouselTransition || 'slide',
-                            transitionEasing: 'easeTo',
-                            transitionDuration: 300,
-                            /* do touchend trigger next slide automatically */
+                            transitionEasing: iAttributes.rnCarouselEasing || 'easeTo',
+                            transitionDuration: parseInt(iAttributes.rnCarouselDuration, 10) || 300,
                             isSequential: true,
                             autoSlideDuration: 3,
                             bufferSize: 5,
@@ -592,7 +591,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                                 scope.$parent.$watch(indexModel, function(newValue, oldValue) {
 
                                     if (newValue !== undefined && newValue !== null) {
-                                        if (currentSlides && newValue >= currentSlides.length) {
+                                        if (currentSlides && currentSlides.length > 0 && newValue >= currentSlides.length) {
                                             newValue = currentSlides.length - 1;
                                             updateParentIndex(newValue);
                                         } else if (currentSlides && newValue < 0) {
@@ -1227,26 +1226,7 @@ angular.module('angular-carousel.shifty', [])
       ,'composeEasingObject': composeEasingObject
     });
 
-    // `root` is provided in the intro/outro files.
-
-    // A hook used for unit testing.
-    if (typeof SHIFTY_DEBUG_NOW === 'function') {
-      root.timeoutHandler = timeoutHandler;
-    }
-
-    // Bootstrap Tweenable appropriately for the environment.
-    if (typeof exports === 'object') {
-      // CommonJS
-      module.exports = Tweenable;
-    } else if (typeof define === 'function' && define.amd) {
-      // AMD: define it as a named module to avoid the mismatched error(http://requirejs.org/docs/errors.html#mismatch)
-      define('shifty', [], function () {return Tweenable;});
-      root.Tweenable = Tweenable;
-    } else if (typeof root.Tweenable === 'undefined') {
-      // Browser: Make `Tweenable` globally accessible.
-      root.Tweenable = Tweenable;
-    }
-
+    root.Tweenable = Tweenable;
     return Tweenable;
 
   } ());

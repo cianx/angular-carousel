@@ -263,9 +263,8 @@
 
                         var defaultOptions = {
                             transitionType: iAttributes.rnCarouselTransition || 'slide',
-                            transitionEasing: 'easeTo',
-                            transitionDuration: 300,
-                            /* do touchend trigger next slide automatically */
+                            transitionEasing: iAttributes.rnCarouselEasing || 'easeTo',
+                            transitionDuration: parseInt(iAttributes.rnCarouselDuration, 10) || 300,
                             isSequential: true,
                             autoSlideDuration: 3,
                             bufferSize: 5,
@@ -513,7 +512,7 @@
                                 scope.$parent.$watch(indexModel, function(newValue, oldValue) {
 
                                     if (newValue !== undefined && newValue !== null) {
-                                        if (currentSlides && newValue >= currentSlides.length) {
+                                        if (currentSlides && currentSlides.length > 0 && newValue >= currentSlides.length) {
                                             newValue = currentSlides.length - 1;
                                             updateParentIndex(newValue);
                                         } else if (currentSlides && newValue < 0) {

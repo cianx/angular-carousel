@@ -51,6 +51,9 @@ angular.module('MyApp', ['angular-carousel']);
  - `rn-carousel-locked`: two way binding boolean that lock/unlock the carousel
  - `rn-carousel-deep-watch`: Deep watch the collection which enable to dynamically add slides at beginning without corrupting position
  - `rn-carousel-loop` : make the carousel loop around from the first element to the last and vice versa. Note that this feature will be disabled if `rn-carousel-buffered` is also declared.
+ - `rn-carousel-easing`: add this attritube to specify a formula for easing, these can be found in the [shifty
+ library](https://github.com/jeremyckahn/shifty/blob/master/src/shifty.formulas.js) (default=easeIn)
+ - `rn-carousel-duration`: add this attritube to set the duration of the transition (default=300)
 
 ## Indicators
 
